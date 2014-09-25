@@ -7,6 +7,7 @@ from BaseHTTPServer import BaseHTTPRequestHandler
 import SocketServer
 import os
 import signal
+import re
 
 class PostHandler(SocketServer.ThreadingMixIn,BaseHTTPRequestHandler):
     
@@ -17,7 +18,7 @@ class PostHandler(SocketServer.ThreadingMixIn,BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write("")
         
-        print shellResp
+        print shellResp.re.sub('^[a-z0-9\.\-]+?\s+-\s+-\[.+?\]\s+"POST\s+/\s+HTTP/1\.1"\s+\d+\s+-\s*\n','')
         return
         
 def setGlobals():
