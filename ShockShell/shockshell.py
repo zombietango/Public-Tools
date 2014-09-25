@@ -74,7 +74,7 @@ def main():
     options = parseArgs()
     setGlobals()
     StartHTTPListener(options.l,options.p)
-    print "Initializing Shell..."
+    print "Initializing Shell...\nType 'exit' to end session."
     while True:
         ShellCmd(options.l,options.p,options.u,options.var,options.m)
     

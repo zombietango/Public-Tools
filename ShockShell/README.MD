@@ -16,5 +16,10 @@ Shockshell uses the standard web interface to inject its commands. The injection
 [Disclaimer]
 This tool is designed for use by penetration testers and system administrators. The standard disclaimers about permissions, etc. apply. 
 
+[Tested On]
+So far, this has only been tested on basic mod_cgi's operating under Apache on Debian. I'm currently on vacation and that's all I have access to. I'd appreciate any feedback on how it operates on other environments.
+
+Full error handling is not yet complete. Things may break spectacularly until everything is done.
+
 [Author]
 Written by Josh Little (@zombietango)
