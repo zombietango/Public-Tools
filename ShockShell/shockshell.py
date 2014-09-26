@@ -13,13 +13,16 @@ class PostHandler(SocketServer.ThreadingMixIn,BaseHTTPRequestHandler):
     def do_POST(self):
         content_len = int(self.headers.getheader('content-length', 0))
         shellResp = self.rfile.read(content_len)
-        resp = '\n'.join(shellResp.split('\n')[1:]) 
         self.send_response(200)
         self.end_headers()
         self.wfile.write("")
         
-        print "\n" + resp + "\n"
+        print resp
         return
+    
+    def log_message(self, format, *args):
+        return
+    
         
 def setGlobals():
     # Set global handler for HTTP PID
