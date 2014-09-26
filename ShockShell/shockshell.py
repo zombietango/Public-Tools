@@ -17,7 +17,7 @@ class PostHandler(SocketServer.ThreadingMixIn,BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write("")
         
-        print resp
+        print shellResp
         return
     
     def log_message(self, format, *args):
