@@ -13,12 +13,12 @@ class PostHandler(SocketServer.ThreadingMixIn,BaseHTTPRequestHandler):
     def do_POST(self):
         content_len = int(self.headers.getheader('content-length', 0))
         shellResp = self.rfile.read(content_len)
-        i = shellResp.index('\n')
+        resp = '\n'.join(shellResp.split('\n')[1:]) 
         self.send_response(200)
         self.end_headers()
         self.wfile.write("")
         
-        print shellResp[i+1:]
+        print resp
         return
         
 def setGlobals():
