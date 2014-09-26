@@ -13,12 +13,12 @@ class PostHandler(SocketServer.ThreadingMixIn,BaseHTTPRequestHandler):
     
     def do_POST(self):
         content_len = int(self.headers.getheader('content-length', 0))
-        shellResp = self.rfile.read(content_len)
+        shellResp = self.rfile.read(content_len).re.sub('^[a-z0-9\.\-]+?\s+-\s+-\[.+?\]\s+"POST\s+/\s+HTTP/1\.1"\s+\d+\s+-\s*\n','')
         self.send_response(200)
         self.end_headers()
         self.wfile.write("")
         
-        print shellResp.re.sub('^[a-z0-9\.\-]+?\s+-\s+-\[.+?\]\s+"POST\s+/\s+HTTP/1\.1"\s+\d+\s+-\s*\n','')
+        print shellResp
         return
         
 def setGlobals():
