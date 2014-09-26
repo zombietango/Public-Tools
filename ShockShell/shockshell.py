@@ -7,19 +7,18 @@ from BaseHTTPServer import BaseHTTPRequestHandler
 import SocketServer
 import os
 import signal
-import re
 
 class PostHandler(SocketServer.ThreadingMixIn,BaseHTTPRequestHandler):
     
     def do_POST(self):
         content_len = int(self.headers.getheader('content-length', 0))
         shellResp = self.rfile.read(content_len)
-        shellResp = re.sub('^[a-z0-9\.\-]+?\s+-\s+-\[.+?\]\s+"POST\s+/\s+HTTP/1\.1"\s+\d+\s+-\s*\n','',shellResp)
+        i = shellResp.index('\n')
         self.send_response(200)
         self.end_headers()
         self.wfile.write("")
         
-        print shellResp
+        print shellResp[i+1:]
         return
         
 def setGlobals():
