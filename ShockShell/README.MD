@@ -1,5 +1,5 @@
 #ShockShell - Bashing on Bash
-##Version 0.1
+##Version 0.2
 
 [Description]
 
@@ -13,7 +13,7 @@ Shockshell uses the standard web interface to inject its commands. The injection
 
 * A local install of cURL (wget and other types of support coming soon)
 * Outbound HTTP access from the server to the local listener (listener must either be on the general Internet or exposed via NAT, etc.)
-* Predictable pathing for the command being run - most instances will not have a $PATH statement so full paths are needed (future version may substitute single commands for their most common full path variants)
+* <del>Predictable pathing for the command being run - most instances will not have a $PATH statement so full paths are needed (future version may substitute single commands for their most common full path variants)</del> Prepends a basic PATH statement to every cmd so that relative pathing can be used in most places. Feel free to modify the PATH in the code as needed.
 
 [Disclaimer]
 
