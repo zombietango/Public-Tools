@@ -18,7 +18,7 @@ class PostHandler(SocketServer.ThreadingMixIn,BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write("")
         
-        print resp
+        print "\n" + resp + "\n"
         return
         
 def setGlobals():
